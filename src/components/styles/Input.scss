@@ -7,6 +7,10 @@
   &::placeholder {  
     color: #aaa;
   }
+  &:disabled  { 
+    cursor: not-allowed;
+    background-color: #e5e5e5;
+  }
   &:focus { 
     outline-color: var(--secondary);
   }

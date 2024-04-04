@@ -47,6 +47,7 @@ const MeetingRoom = () => {
         <tbody>
           {meetingRoomsData.map((mr: any) => {
             return (
+              <>
               <tr>
                 <td>{mr.id}</td>
                 <td>{mr.name}</td>
@@ -59,6 +60,7 @@ const MeetingRoom = () => {
                   </Button>
                 </td>
               </tr>
+          </>
             );
           })}
         </tbody>
@@ -73,7 +75,7 @@ const MeetingRoom = () => {
           <Button
             onClick={() => handleSubmit()}
             style={{ marginTop: 10 }}
-            className="success"
+            className="success solid"
           >
             Submit
           </Button>

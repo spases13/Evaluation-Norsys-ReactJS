@@ -29,6 +29,13 @@ $info  :#6CABDD;
   }
   &.success {
     outline-color: $success;
+    &.solid { 
+      background-color: $success;
+      color: var(--white);
+      &:hover { 
+        filter: brightness(95%);
+      }
+    }
     &:hover { 
       background-color: $success;
     }
@@ -45,6 +52,13 @@ $info  :#6CABDD;
     &:hover {
       color: var(--white);
       background-color:  $info;
+    }
+    &.solid { 
+      background-color: $info;
+      color: var(--white);
+      &:hover { 
+        filter: brightness(95%);
+      }
     }
   }
 

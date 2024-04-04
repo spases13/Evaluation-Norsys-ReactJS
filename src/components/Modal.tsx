@@ -1,7 +1,10 @@
+import DarkOverlay from "./DarkOverlay";
 import "./styles/Modal.scss";
 const Modal = ({onClick , children , title}  : any) => {
   return (
-    <div className="Modal">
+    <>
+    <DarkOverlay onClick = {onClick}>
+    <div className="Modal" onClick={(e : any)=>{e.stopPropagation()}}>
       <header>
         <button className="btn_close">
           <i className="bx bx-x"></i>
@@ -10,7 +13,7 @@ const Modal = ({onClick , children , title}  : any) => {
         <button
           onClick={onClick}
           className="btn_close"
-        >
+          >
           <i className="bx bx-x"></i>
         </button>
       </header>
@@ -18,6 +21,8 @@ const Modal = ({onClick , children , title}  : any) => {
         {children}
       </main>
     </div>
+    </DarkOverlay>
+  </>
   );
 };
 
