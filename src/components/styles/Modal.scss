@@ -1,0 +1,52 @@
+.Modal {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  translate: -50% 0;
+  width: 450px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+  z-index: 1000;
+  animation  : slideup 0.3s ease forwards;
+  header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    .btn_close {
+      width: 20px;
+      font-size: 1.1rem;
+      border-radius: 100%;
+      background-color: var(--white);
+      &:first-child  { 
+        visibility: hidden;
+      }
+      &:hover { 
+        transition: 0.2s;
+        background-color: #e5e5e5;
+      }
+    }
+  }
+  main { 
+    max-height: 60vh ;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+}
+
+@keyframes slideup {
+  0%{
+    top: 100%;
+    translate: -50% 0;
+  }
+  100% {
+    top: 50%;
+    translate: -50% -50%;
+  }
+}

@@ -1,0 +1,14 @@
+.MeetingRoom { 
+  position: relative;
+  & > header { 
+    padding: 2rem 10px;
+    width: calc(100%  - 2rem);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  .Table {
+    max-width: calc(100% - 10px);
+    margin: 2rem auto;
+  }
+}

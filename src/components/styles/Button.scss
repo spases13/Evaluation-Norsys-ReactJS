@@ -1,0 +1,56 @@
+$success  : #00A650;
+$danger : #C8102E;
+$info  :#6CABDD;
+
+
+.Button {
+  user-select: none;
+  outline: none;
+  padding: 10px 1.5rem;
+  background-color: #fff;
+  color: $success;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: 0.1s ease-in-out;
+  outline: 2px solid;
+  cursor: pointer;
+  outline-color: var(--primary);
+  &:hover {
+    background-color: var(--primary);
+    outline-color: var(--primary);
+    color: var(--white);
+  }
+  &.square { 
+    padding: 10px;
+    width: 40px;
+    height: 40px;
+    aspect-ratio: 1;
+  }
+  &.success {
+    outline-color: $success;
+    &:hover { 
+      background-color: $success;
+    }
+  }
+  &.danger {  
+    outline-color: $danger;
+    &:hover {
+      background-color:  $danger;
+    }
+  }
+  &.info {  
+    outline-color: $info;
+    color: $info;
+    &:hover {
+      color: var(--white);
+      background-color:  $info;
+    }
+  }
+
+
+  &:active { 
+    scale: 0.97;
+    transition: 0.1s;
+  }
+}
