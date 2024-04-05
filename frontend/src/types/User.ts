@@ -1,6 +1,7 @@
 export interface User {
-  id?: string | number,
-  firstName : string,
-  lastName : string , 
-  email  : string
+  user_id?: string | number,
+  date_inscription : any ,
+  nom : string , 
+  prenom : string,
+  tel : string
 }

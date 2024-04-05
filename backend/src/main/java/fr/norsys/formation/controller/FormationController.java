@@ -62,13 +62,13 @@ public class FormationController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @GetMapping("/adherents")
+    @GetMapping("/users")
     public ResponseEntity<List<User>> getAllAdherents() {
-        List<User> adherents = formationService.getAllAdherents();
-        return new ResponseEntity<>(adherents, HttpStatus.OK);
+        List<User> users = formationService.getAllAdherents();
+        return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
-    @GetMapping("/adherents/{id}")
+    @GetMapping("/users/{id}")
     public ResponseEntity<User> getAdherentById(@PathVariable("id") long id) {
         Optional<User> adherentOptional = formationService.getAdherentById(id);
         return adherentOptional
@@ -76,7 +76,7 @@ public class FormationController {
                 .orElseThrow(() -> new ResourceNotFoundException("Adherent not found with ID: " + id));
     }
 
-    @PostMapping("/adherents")
+    @PostMapping("/users")
     public ResponseEntity<User> createAdherent(@Valid @RequestBody User adherent) {
         User createdAdherent = formationService.createAdherent(adherent);
         return new ResponseEntity<>(createdAdherent, HttpStatus.CREATED);
@@ -88,14 +88,14 @@ public class FormationController {
         return new ResponseEntity<>(createdAdherent, HttpStatus.CREATED);
     }
 
-    @PutMapping("/adherents/{id}")
+    @PutMapping("/users/{id}")
     public ResponseEntity<User> updateAdherent(@PathVariable("id") long id, @Valid @RequestBody User adherent) {
         User updatedAdherent = formationService.updateAdherent(id, adherent);
         return updatedAdherent != null ? new ResponseEntity<>(updatedAdherent, HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @DeleteMapping("/adherents/{id}")
+    @DeleteMapping("/users/{id}")
     public ResponseEntity<Void> deleteAdherent(@PathVariable("id") long id) {
         formationService.deleteAdherent(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

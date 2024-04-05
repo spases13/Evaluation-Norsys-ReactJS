@@ -16,7 +16,7 @@ const SideBar = () => {
   const pathnameData: any = [
     {
       index: 0,
-      pathname: "/dashboard/meeting_rooms",
+      pathname: "/dashboard/books",
     },
     {
       index: 1,
@@ -37,12 +37,12 @@ const SideBar = () => {
       <Logo />
       <ul className="menu_list">
         <SideBarItem
-          href = {"/dashboard/meeting_rooms"}
+          href = {"/dashboard/books"}
           onClick={() => {
             setSelectedMenuIndex(0)
           }}
-          labelName="Meeting Rooms"
-          iconClassName="bx bx-building-house"
+          labelName="Books"
+          iconClassName="bx bx-book"
           selectedMenuIndex={selectedMenuIndex}
           index={0}
         />
@@ -61,8 +61,8 @@ const SideBar = () => {
           onClick={() => {
             setSelectedMenuIndex(2)
           }}
-          labelName="Reservations"
-          iconClassName="bx bx-calendar-exclamation"
+          labelName="Loans"
+          iconClassName="bx bx-book-reader"
           selectedMenuIndex={selectedMenuIndex}
           index={2}
         />

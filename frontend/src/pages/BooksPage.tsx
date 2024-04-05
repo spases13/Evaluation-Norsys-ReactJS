@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Button from "../components/Button";
 import Main from "../components/Main";
 import Modal from "../components/Modal";
-import "./styles/UsersPage.scss";
+import "./styles/BooksPage.scss";
 import Input from "../components/Input";
 
 import toast from "react-hot-toast";
@@ -12,7 +12,7 @@ import FormatDate from "../functions/FormatDate";
 import ShrinkDate from "../functions/ShrinkDate";
 
 
-const UsersPage = () => {
+const BooksPage = () => {
   const [usersData, setUsersData] = useState<User[]>([]);
 
   const [isUpdateMode , setIsUpdateMode] = useState(false)
@@ -135,7 +135,7 @@ const UsersPage = () => {
   }
    
   return (
-    <Main className="UsersPage">
+    <Main className="BooksPage">
       <header>
         <Button onClick={() => {clearInputs() ; setIsUpdateMode(false) ; setIsModalOpened(true)}} className="success">
           New User
@@ -194,4 +194,4 @@ const UsersPage = () => {
   );
 };
 
-export default UsersPage;
+export default BooksPage;
