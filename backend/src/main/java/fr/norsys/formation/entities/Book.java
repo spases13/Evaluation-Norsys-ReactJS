@@ -11,14 +11,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "formation")
+@Table(name = "book")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Formation {
+public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_formation;
+    private Long book_id;
     @NotBlank
     private String titre;
     @NotBlank
@@ -28,9 +28,9 @@ public class Formation {
 
     @ManyToMany
     @JoinTable(
-        name = "formation_adherent",
-        joinColumns = @JoinColumn(name = "formation_id"),
-        inverseJoinColumns = @JoinColumn(name = "adherent_id")
+        name = "book_user",
+        joinColumns = @JoinColumn(name = "book_id"),
+        inverseJoinColumns = @JoinColumn(name = "user_id")
     )
-    private Set<Adherent> adherents = new HashSet<>();
+    private Set<User> adherents = new HashSet<>();
 }

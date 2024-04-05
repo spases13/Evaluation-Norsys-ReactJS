@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name  = "formation_adherent")
+@Table(name  = "book_user")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -15,6 +15,6 @@ public class Affectation {
   @Id
   @GeneratedValue
   private Long affectation_id;
-  private Long formation_id;
-  private Long adherent_id;
+  private Long book_id;
+  private Long user_id;
 }

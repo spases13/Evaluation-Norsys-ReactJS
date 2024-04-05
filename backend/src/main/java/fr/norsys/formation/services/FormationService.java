@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 import fr.norsys.formation.dao.AdherentRepository;
 import fr.norsys.formation.dao.AffectationRepository;
 import fr.norsys.formation.dao.FormationRepository;
-import fr.norsys.formation.entities.Adherent;
+import fr.norsys.formation.entities.User;
 import fr.norsys.formation.entities.Affectation;
-import fr.norsys.formation.entities.Formation;
+import fr.norsys.formation.entities.Book;
 import fr.norsys.formation.exceptions.ResourceNotFoundException;
 
 import java.util.List;
@@ -26,22 +26,22 @@ public class FormationService {
     @Autowired
     private AffectationRepository affectationRepository;
 
-    public List<Formation> getAllFormations() {
+    public List<Book> getAllFormations() {
         return formationRepository.findAll();
     }
 
-    public Optional<Formation> getFormationById(Long id) {
+    public Optional<Book> getFormationById(Long id) {
         return formationRepository.findById(id);
     }
 
-    public Formation createFormation(Formation formation) {
+    public Book createFormation(Book formation) {
         return formationRepository.save(formation);
     }
     public Affectation createAffectation(Affectation affectation) {
         return affectationRepository.save(affectation);
     }
 
-    public Formation updateFormation(Long id, Formation updatedFormation) {
+    public Book updateFormation(Long id, Book updatedFormation) {
         return formationRepository.findById(id).map(formation -> {
             formation.setTitre(updatedFormation.getTitre());
             formation.setDescription(updatedFormation.getDescription());
@@ -57,19 +57,19 @@ public class FormationService {
 
     // Methods for adherents
 
-    public List<Adherent> getAllAdherents() {
+    public List<User> getAllAdherents() {
         return adherentRepository.findAll();
     }
 
-    public Optional<Adherent> getAdherentById(Long id) {
+    public Optional<User> getAdherentById(Long id) {
         return adherentRepository.findById(id);
     }
 
-    public Adherent createAdherent(Adherent adherent) {
+    public User createAdherent(User adherent) {
         return adherentRepository.save(adherent);
     }
 
-    public Adherent updateAdherent(Long id, Adherent updatedAdherent) {
+    public User updateAdherent(Long id, User updatedAdherent) {
         return adherentRepository.findById(id).map(adherent -> {
             adherent.setNom(updatedAdherent.getNom());
             adherent.setPrenom(updatedAdherent.getPrenom());

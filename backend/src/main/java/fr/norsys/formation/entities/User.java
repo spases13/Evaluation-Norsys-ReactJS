@@ -7,14 +7,14 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "adherent")
+@Table(name = "user")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Adherent {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_adherent;
+    private Long user_id;
     private String nom;
     private String prenom;
     private Date date_inscription;
