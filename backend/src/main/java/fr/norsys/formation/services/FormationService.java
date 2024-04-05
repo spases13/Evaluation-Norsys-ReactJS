@@ -7,7 +7,7 @@ import fr.norsys.formation.dao.AdherentRepository;
 import fr.norsys.formation.dao.AffectationRepository;
 import fr.norsys.formation.dao.FormationRepository;
 import fr.norsys.formation.entities.User;
-import fr.norsys.formation.entities.Affectation;
+import fr.norsys.formation.entities.Loan;
 import fr.norsys.formation.entities.Book;
 import fr.norsys.formation.exceptions.ResourceNotFoundException;
 
@@ -37,7 +37,7 @@ public class FormationService {
     public Book createFormation(Book formation) {
         return formationRepository.save(formation);
     }
-    public Affectation createAffectation(Affectation affectation) {
+    public Loan createAffectation(Loan affectation) {
         return affectationRepository.save(affectation);
     }
 
@@ -80,11 +80,21 @@ public class FormationService {
         }).orElseThrow(() -> new ResourceNotFoundException("Adherent not found with ID: " + id));
     }
 
+    public Loan updateLoan(Long id, Loan updatedAdherent) {
+        return affectationRepository.findById(id).map(adherent -> {
+            adherent.setBook_id(updatedAdherent.getBook_id());
+            adherent.setLoan_id(updatedAdherent.getLoan_id());
+            adherent.setStartDate(updatedAdherent.getStartDate());
+            adherent.setEndDate(updatedAdherent.getEndDate());
+            return affectationRepository.save(adherent);
+        }).orElseThrow(() -> new ResourceNotFoundException("Loan not found with ID: " + id));
+    }
+
     public void deleteAdherent(Long id) {
         adherentRepository.deleteById(id);
     }
 
-    public List<Affectation> getAllAffectations() {
+    public List<Loan> getAllAffectations() {
         return affectationRepository.findAll();
     }
 

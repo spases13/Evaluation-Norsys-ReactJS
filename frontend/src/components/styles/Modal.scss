@@ -15,6 +15,9 @@
     padding: 1rem;
     text-align: center;
     border-bottom: 1px solid #ccc;
+    h4 { 
+      translate:  0px 3px;
+    }
     .btn_close {
       width: 22px;
       aspect-ratio: 1;
@@ -40,6 +43,10 @@
     flex-direction: column;
     gap: 1rem;
     padding: 1rem;
+    padding-bottom: 3px;
+  }
+  footer { 
+    height: 20px;
   }
 }
 

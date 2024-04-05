@@ -3,6 +3,9 @@ package fr.norsys.formation.entities;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Date;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -11,10 +14,12 @@ import jakarta.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class Affectation {
+public class Loan {
   @Id
   @GeneratedValue
-  private Long affectation_id;
+  private Long loan_id;
   private Long book_id;
   private Long user_id;
+  private Date startDate;
+  private Date endDate;
 }

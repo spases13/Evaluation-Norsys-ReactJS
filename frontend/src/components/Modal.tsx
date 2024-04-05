@@ -20,6 +20,8 @@ const Modal = ({onClick , children , title}  : any) => {
       <main>
         {children}
       </main>
+      <footer>
+      </footer>
     </div>
     </DarkOverlay>
   </>

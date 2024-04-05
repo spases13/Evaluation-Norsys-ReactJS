@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import fr.norsys.formation.entities.User;
-import fr.norsys.formation.entities.Affectation;
+import fr.norsys.formation.entities.Loan;
 import fr.norsys.formation.entities.Book;
 import fr.norsys.formation.exceptions.ResourceNotFoundException;
 import fr.norsys.formation.services.FormationService;
@@ -29,9 +29,9 @@ public class FormationController {
         return new ResponseEntity<>(formations, HttpStatus.OK);
     }
 
-    @GetMapping("/affectations")
-    public ResponseEntity<List<Affectation>> getAllAffectations() {
-        List<Affectation> affectations = formationService.getAllAffectations();
+    @GetMapping("/loans")
+    public ResponseEntity<List<Loan>> getAllAffectations() {
+        List<Loan> affectations = formationService.getAllAffectations();
         return new ResponseEntity<>(affectations, HttpStatus.OK);
     }
 
@@ -82,9 +82,9 @@ public class FormationController {
         return new ResponseEntity<>(createdAdherent, HttpStatus.CREATED);
     }
 
-    @PostMapping("/affectations")
-    public ResponseEntity<Affectation> createAffectation(@Valid @RequestBody Affectation adherent) {
-        Affectation createdAdherent = formationService.createAffectation(adherent);
+    @PostMapping("/loans")
+    public ResponseEntity<Loan> createAffectation(@Valid @RequestBody Loan adherent) {
+        Loan createdAdherent = formationService.createAffectation(adherent);
         return new ResponseEntity<>(createdAdherent, HttpStatus.CREATED);
     }
 
@@ -95,13 +95,20 @@ public class FormationController {
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    @PutMapping("/loans/{id}")
+    public ResponseEntity<Loan> updateLoan(@PathVariable("id") long id, @Valid @RequestBody Loan adherent) {
+        Loan updatedLoan = formationService.updateLoan(id, adherent);
+        return updatedLoan != null ? new ResponseEntity<>(updatedLoan, HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
     @DeleteMapping("/users/{id}")
     public ResponseEntity<Void> deleteAdherent(@PathVariable("id") long id) {
         formationService.deleteAdherent(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @DeleteMapping("/affectations/{id}")
+    @DeleteMapping("/loans/{id}")
     public ResponseEntity<Void> deleteAffectation(@PathVariable("id") long id) {
         formationService.deleteAffectation(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

@@ -31,12 +31,16 @@ const BooksPage = () => {
     type : type,
   }
 
-  useEffect(() => {
-    if (booksData.length === 0) {
-      axios.get("http://localhost:8787/api/bookloans/books").then((response: any) => {
+  const getData = () => {
+    axios.get("http://localhost:8787/api/bookloans/books").then((response: any) => {
         const data = response.data;
         setBooksData(data);
       });
+  }
+
+  useEffect(() => {
+    if (booksData.length === 0) {
+      getData()
     }
   }, []);
 
@@ -48,9 +52,8 @@ const BooksPage = () => {
     axios.post("http://localhost:8787/api/bookloans/books", bookFormData)
     .then(() => {
       toast.success("Book Added Success", { style: { fontWeight: 600 } });
-      setTimeout(()=>{
-        window.location.reload()
-      } , 1000)
+      getData()
+      setIsModalOpened(false)
     })
     .catch((error) => {
       console.error("Error:", error);
@@ -74,9 +77,8 @@ const BooksPage = () => {
       axios.delete("http://localhost:8787/api/bookloans/books/" + bookId)
       .then(()=>{
         toast.success(`Book Deleted Success : id : ${bookId}`, { style: { fontWeight: 600 } }); 
-        setTimeout(()=>{
-          window.location.reload()
-        },  1000)
+        getData()
+        setIsModalOpened(false)
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -89,7 +91,7 @@ const BooksPage = () => {
     setIsModalOpened(true)
     setIsUpdateMode(true)
     const targetBook : any = booksData?.find((Book : Book) => Book?.book_id === bookId)
-    setDatePublish((ShrinkDate(targetBook?.date_publish?.toString())))
+    setDatePublish((ShrinkDate(targetBook?.date_publish?.toString()).slice(0,10)))
     setSummary(targetBook!.summary)
     setTitle(targetBook!.title)
     setAuthor(targetBook!.author)
@@ -102,9 +104,8 @@ const BooksPage = () => {
     axios.put(`http://localhost:8787/api/bookloans/books/${bookId}`, bookFormData)
     .then(() => {
       toast.success("Book Updated Success", { style: { fontWeight: 600 } });
-      setTimeout(()=>{
-        window.location.reload()
-      } , 1000)
+      getData()
+      setIsModalOpened(false)
     })
     .catch((error) => {
       console.error("Error:", error);
@@ -179,13 +180,24 @@ const BooksPage = () => {
       </table>
       {isModalOpened && (
         <Modal title={isUpdateMode ? "Update Book"  : "Add Book"} onClick={() => setIsModalOpened(false)}>
-          <Input value = {bookId} disabled = {true} type="number" placeholder="ID" />
-          <Input value = {date_publish!.toString().slice(0,10)} onChange = {(e : any)=> setDatePublish(e.target.value)} type="date" placeholder="Date Publish" />
-          <Input isTextArea = {true} value = {summary} onChange = {(e : any)=> setSummary(e.target.value)} type="text" placeholder="Summary" />
-          <Input value = {author} onChange = {(e : any)=> setAuthor(e.target.value)} type="text" placeholder="Author" />
-          <Input value = {title} onChange = {(e : any)=> setTitle(e.target.value)} type="text" placeholder="Title" />
-          <Input value = {type} onChange = {(e : any)=> setType(e.target.value)} type="text" placeholder="Type" />
-          <Input value = {quantity} onChange = {(e : any)=> setQuantity(e.target.value)} type="number" placeholder="Quantity" />
+            {
+            isUpdateMode && <>
+              <h5>Book ID</h5>
+              <Input value = {bookId ?? ""} disabled = {true} type="number" placeholder="Book ID" />
+            </>
+            }
+          <h5>Publish Date</h5>
+          <Input value={date_publish instanceof Date ? date_publish.toISOString().slice(0, 10) : date_publish ?? ""} onChange = {(e : any)=> setDatePublish(e.target.value)} type="date" placeholder="Date Publish" />
+          <h5>Summary</h5>
+          <Input isTextArea = {true} value = {summary ?? ""} onChange = {(e : any)=> setSummary(e.target.value)} type="text" placeholder="Summary" />
+          <h5>Author</h5>
+          <Input value = {author ?? ""} onChange = {(e : any)=> setAuthor(e.target.value)} type="text" placeholder="Author" />
+          <h5>Title</h5>
+          <Input value = {title ?? ""} onChange = {(e : any)=> setTitle(e.target.value)} type="text" placeholder="Title" />
+          <h5>Type</h5>
+          <Input value = {type ?? ""} onChange = {(e : any)=> setType(e.target.value)} type="text" placeholder="Type" />
+          <h5>Quantity</h5>
+          <Input value = {quantity ?? ""} onChange = {(e : any)=> setQuantity(e.target.value)} type="number" placeholder="Quantity" />
           <Button
             onClick={() => isUpdateMode ?  updateUser(bookId) : triggerPost()}
             style={{ marginTop: 10 }}
