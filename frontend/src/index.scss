@@ -10,7 +10,7 @@
 :root { 
   --primary : rgb(42, 42, 218) ;
   // --secondary : rgb(56, 18, 102);
-  --secondary : rgb(30, 122, 172);
+  --secondary : rgb(222, 124, 31);
   --white : azure;
   --black : #222222;
   --font-sans : "Urbanist" , sans-serif;
@@ -42,9 +42,9 @@ ul {
 
 a { 
   text-decoration: none;
-  &:hover { 
-    // text-decoration: underline;
-  }
+  // &:hover { 
+  //   // text-decoration: underline;
+  // }
 }
 
 .container  { 

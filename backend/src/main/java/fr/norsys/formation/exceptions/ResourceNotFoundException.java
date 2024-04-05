@@ -1,4 +1,4 @@
-package fr.norsys.reservation.exceptions;
+package fr.norsys.formation.exceptions;
 
 public class ResourceNotFoundException extends RuntimeException {
     public ResourceNotFoundException(String message) {

@@ -1,4 +1,4 @@
-package fr.norsys.reservation;
+package fr.norsys.formation;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
@@ -7,7 +7,7 @@ public class ServletInitializer extends SpringBootServletInitializer {
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(ApplicationReservation.class);
+		return application.sources(ApplicationFormation.class);
 	}
 
 }

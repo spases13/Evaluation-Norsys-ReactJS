@@ -4,9 +4,7 @@ import "./styles/SideBar.scss";
 import SideBarItem from "./SideBarItem";
 
 const SideBar = () => {
-  const [selectedMenuIndex, setSelectedMenuIndex] = useState<number | null>(
-    null
-  );
+  const [selectedMenuIndex, setSelectedMenuIndex] = useState<number | null>(null);
 
   const url = window.location.pathname;
 

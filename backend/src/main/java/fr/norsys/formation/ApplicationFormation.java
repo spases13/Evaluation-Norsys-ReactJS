@@ -1,13 +1,12 @@
-package fr.norsys.reservation;
+package fr.norsys.formation;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ApplicationReservation {
+public class ApplicationFormation {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ApplicationReservation.class, args);
+		SpringApplication.run(ApplicationFormation.class, args);
 	}
-
 }
