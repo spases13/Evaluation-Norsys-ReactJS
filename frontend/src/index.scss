@@ -26,11 +26,13 @@ html , body {
   color: var(--black);
 }
 
-button , input {
+button , input , textarea {
   background-color: transparent; 
   border: none;
   outline: none;
 }
+
+
 
 button  {
   cursor: pointer;
@@ -54,6 +56,10 @@ a {
 .Table {
   border-radius: 5px;
   border: 2px solid;
+  margin-left: 20px !important;
+  margin-right: 20px !important;
+  min-width: 700px !important;
+  align-self: center;
   // background-color: var(--white);
   border-color: var(--secondary);
   td,th { 
@@ -64,13 +70,25 @@ a {
     border-bottom: 2px solid cyan;
   }
   td.actions{
-    display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 10px;
     padding-left: 20px ;
     padding-right: 20px ;
+    height: 100% !important;
+    & * { 
+      margin-right: 10px;
+      &:last-child { 
+        margin-right: 0;
+      }
+    }
   }
   thead { 
     background-color: var(--secondary);
     color: var(--white);
+  }
+  td.summary { 
+    word-wrap: break-word;
+    max-width: 300px;
   }
 }

@@ -17,9 +17,6 @@ public class User {
     private Long user_id;
     private String nom;
     private String prenom;
-    private Date date_inscription;
+    private Date date_naissance;
     private String tel;
-
-    // @ManyToMany(mappedBy = "adherents")
-    // private Set<Formation> formations = new HashSet<>();
 }

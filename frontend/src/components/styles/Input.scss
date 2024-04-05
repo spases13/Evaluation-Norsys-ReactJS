@@ -3,11 +3,13 @@
   border-radius: 5px;
   font-size: 1rem;
   font-weight: 500;
+  flex-shrink: 0;
   outline: 2px solid #e5e5e5;
   &::placeholder {  
     color: #aaa;
   }
   &:disabled  { 
+    color: #999 ;
     cursor: not-allowed;
     background-color: #e5e5e5;
   }

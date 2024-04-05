@@ -43,12 +43,13 @@ public class FormationService {
 
     public Book updateFormation(Long id, Book updatedFormation) {
         return formationRepository.findById(id).map(formation -> {
-            formation.setTitre(updatedFormation.getTitre());
-            formation.setDescription(updatedFormation.getDescription());
-            formation.setDateDebut(updatedFormation.getDateDebut());
-            formation.setDateFin(updatedFormation.getDateFin());
+            formation.setTitle(updatedFormation.getTitle());
+            formation.setSummary(updatedFormation.getSummary());
+            formation.setType(updatedFormation.getType());
+            formation.setDate_publish(updatedFormation.getDate_publish());
+            formation.setQuantity(updatedFormation.getQuantity());
             return formationRepository.save(formation);
-        }).orElseThrow(() -> new ResourceNotFoundException("Formation not found with ID: " + id));
+        }).orElseThrow(() -> new ResourceNotFoundException("Book not found with ID: " + id));
     }
 
     public void deleteFormation(Long id) {
@@ -73,7 +74,7 @@ public class FormationService {
         return adherentRepository.findById(id).map(adherent -> {
             adherent.setNom(updatedAdherent.getNom());
             adherent.setPrenom(updatedAdherent.getPrenom());
-            adherent.setDate_inscription(updatedAdherent.getDate_inscription());
+            adherent.setDate_naissance(updatedAdherent.getDate_naissance());
             adherent.setTel(updatedAdherent.getTel());
             return adherentRepository.save(adherent);
         }).orElseThrow(() -> new ResourceNotFoundException("Adherent not found with ID: " + id));

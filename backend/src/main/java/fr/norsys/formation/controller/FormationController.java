@@ -23,7 +23,7 @@ public class FormationController {
     @Autowired
     private FormationService formationService;
 
-    @GetMapping("")
+    @GetMapping("/books")
     public ResponseEntity<List<Book>> getAllFormations() {
         List<Book> formations = formationService.getAllFormations();
         return new ResponseEntity<>(formations, HttpStatus.OK);
@@ -35,7 +35,7 @@ public class FormationController {
         return new ResponseEntity<>(affectations, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/books/{id}")
     public ResponseEntity<Book> getFormationById(@PathVariable("id") long id) {
         Optional<Book> formationOptional = formationService.getFormationById(id);
         return formationOptional
@@ -43,20 +43,20 @@ public class FormationController {
                 .orElseThrow(() -> new ResourceNotFoundException("Formation not found with ID: " + id));
     }
 
-    @PostMapping("")
+    @PostMapping("/books")
     public ResponseEntity<Book> createFormation(@Valid @RequestBody Book formation) {
         Book createdFormation = formationService.createFormation(formation);
         return new ResponseEntity<>(createdFormation, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/books/{id}")
     public ResponseEntity<Book> updateFormation(@PathVariable("id") long id, @Valid @RequestBody Book formation) {
         Book updatedFormation = formationService.updateFormation(id, formation);
         return updatedFormation != null ? new ResponseEntity<>(updatedFormation, HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/books/{id}")
     public ResponseEntity<Void> deleteFormation(@PathVariable("id") long id) {
         formationService.deleteFormation(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

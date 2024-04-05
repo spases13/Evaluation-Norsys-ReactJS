@@ -3,6 +3,7 @@ export interface Book {
   title : string ,
   summary : string , 
   type : string,
-  tel : string,
-  date_apparution : any
+  quantity : number,
+  author : string,
+  date_publish : any
 }

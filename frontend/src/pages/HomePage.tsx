@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import SideBar from "../components/SideBar"
 import "./styles/HomePage.scss"
-import ReservationsPage from "./ReservationsPage"
+import ReservationsPage from "./LoansPage"
 import UsersPage from "./UsersPage"
 import AboutPage from "./AboutPage"
 import BooksPage from "./BooksPage"

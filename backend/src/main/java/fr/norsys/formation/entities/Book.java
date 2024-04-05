@@ -6,6 +6,7 @@ import java.util.Set;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,11 +21,16 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long book_id;
     @NotBlank
-    private String titre;
+    private String title;
     @NotBlank
-    private String description;
-    private Date dateDebut;
-    private Date dateFin;
+    private String summary;
+    @NotBlank
+    private String type;
+    @NotBlank
+    private String author;
+    private int quantity = 0;
+    @NotNull
+    private Date date_publish;
 
     @ManyToMany
     @JoinTable(
